@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit itinerary</title>
+</head>
+<body>
+<section>
+    <form action="" method="post">{% csrf_token %}
+        {{ form }}
+    <input type="submit" value="Save" />
+    </form>
+</section>
+<nav>
+    <ul>
+        <li><a href="{% url 'passingships:home' %}">Home page</a></li>
+        <li><a href="{% url 'auth:logout' %}?next=/thirdauth/">Logout</a></li>
+    </ul>
+</nav>
+</body>
+</html>

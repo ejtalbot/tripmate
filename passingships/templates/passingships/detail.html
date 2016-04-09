@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile overview</title>
+</head>
+<body>
+<section>
+    <p><a href="{% url 'passingships:newitinerary' %}">Add a new itinerary</a></p>
+    {% for itinerary in user.itineraries.all %}
+    <ul>
+        <li><b>Name:</b> {{ itinerary.name }}</li>
+        <li><b>Description:</b> {{ itinerary.description }}</li>
+        <li><b>City:</b> {{ itinerary.city }}</li>
+        <li><b>Country:</b> {{ itinerary.country }}</li>
+        <li><b>When:</b> {{ itinerary.start_date }} to {{ itinerary.end_date }}</li>
+        <li><b>Price point:</b> {{ itinerary.get_price_display }}</li>
+        <li><b>Pace:</b> {{ itinerary.get_pace_display }}</li>
+        <li><a href="{% url 'passingships:edititinerary' itinerary.id %}">Edit this itinerary</a></li>
+    </ul>
+    {% endfor %}
+</section>
+<nav>
+    <ul>
+        <li><a href="{% url 'passingships:home' %}">Home page</a></li>
+        <li><a href="{% url 'auth:logout' %}?next=/passingships/">Logout</a></li>
+    </ul>
+</nav>
+</body>
+</html>

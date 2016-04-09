@@ -1,0 +1,33 @@
+{% extends 'passingships/base.html' %}
+
+{% block main %}
+ <div>
+ <h1>Tripmate finder</h1>
+
+ <p>
+   <ul>
+   {% if user and not user.is_anonymous %}
+     <li>
+       <a>Hello {{ user.get_full_name|default:user.username }}!</a>
+     </li>
+     <li>
+       <a>Meet some people while traveling away from {{ user.userprofile.home_city.name }}!</a>
+     </li>
+     <li>
+       <a href="{% url 'passingships:editprofile' %}">Edit profile here</a>
+     </li>
+     <li>
+       <a href="{% url 'passingships:detail' user.id %}">View your current itineraries</a>
+     </li>
+     <li>
+       <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
+     </li>
+   {% else %}
+     <li>
+       <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login through Google</a>
+     </li>
+   {% endif %}
+   </ul>
+ </p>
+ </div>
+{% endblock %}

@@ -1,0 +1,4 @@
+*.pyc
+db.sqlite3
+mysite/settings.py
+__pycache__
